@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/f.png" type="image/png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#" class="logo">&ensp;FriendZone.</a>
+
+        <div class="nav-links">
+            <a href="index.html"><span class="material-symbols-outlined">home</span></a>
+            <a href="account/account.html"><span class="material-symbols-outlined">account_circle</span></a>
+            <a href="messages/messages.html"><span class="material-symbols-outlined">mail</span></a>
+
+            <!-- Account Dropdown -->
+            <div class="dropdown">
+                <button class="dropbtn"><span class="material-symbols-outlined">person</span></button>
+                <div class="dropdown-content">
+                    <a href="#"><span class="material-symbols-outlined">settings</span> Setting & Privacy</a>
+                    <a href="#"><span class="material-symbols-outlined">help</span> Help & Support</a>
+                    <a href="#" id="darkModeToggle"><span class="material-symbols-outlined">dark_mode</span> Display Accessibility</a>
+                    <a href="https://blankwhitescreen.com/"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add the new section for story upload -->
+    <!-- Story Section (Updated) -->
+    <div class="story-section">
+        <button id="prevStory" aria-label="Previous Stories">&lt;</button>
+        <div class="stories-container" id="storiesContainer">
+            <div class="story create-story" onclick="openStoryUpload()">
+                <span>+</span>
+                <p>Create Story</p>
+            </div>
+        </div>
+        <button id="nextStory" aria-label="Next Stories">&gt;</button>
+    </div>
+
+    <!-- Story Upload Modal -->
+    <div id="storyUploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeStoryUpload()">&times;</span>
+            <h2>Upload Story</h2>
+    <!-- file input -->
+            <input type="file" id="storyFileInput" accept="image/*,video/*" onchange="previewStory()">
+
+    <!-- Preview Area -->
+        <div id="storyPreview"></div>
+
+                <!-- Image Editing Tools -->
+                <div class="edit-tools" id="editTools">
+                    <input type="text" id="storyTitleModal" placeholder="Enter story title">
+                    <button onclick="rotateImage()">Rotate</button>
+                    <button onclick="trimVideo()">Trim</button>
+                </div>
+            <button onclick="uploadStory()">Upload</button>
+            <button onclick="closeStoryUpload()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Story Viewer -->
+    <div class="story-viewer" id="storyViewer">
+        <div class = "progress-bar">
+            <div class="progress" id="progressBar"></div>
+        </div>
+        <button id="prevStoryView" aria-label="Previous Story">&lt;</button>
+        <div class="story-viewer-content">
+            <span id="closeViewer" aria-label="Close Viewer">&times;</span>
+            <img id="viewerImage" src="" alt="Story">
+            <video id="viewerVideo" controls></video>
+            <div class="story-indicators" id="storyIndicators"></div>
+        </div>
+        <button id="nextStoryView" aria-label="Next Story">&gt;</button>
+    </div>
+
+    <!-- News Feed -->
+    <div class="news-feed">
+        <div class="post-creator">
+            <div class="image-preview">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4g_2Qj3LsNR-iqUAFm6ut2EQVcaou4u2YXw&s" alt="Profile Image" id="profileImage" onclick="changeProfileImage()">
+            </div>
+            <textarea id="postText" placeholder="What's on your mind?"></textarea>
+            <input type="file" id="postImage" accept="image/*,video/*">
+            <button onclick="addPost()">Post</button>
+        </div>
+        <div class="posts-container" id="postsContainer"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 My Social Platform</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+</body>
+</html>

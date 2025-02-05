@@ -1,0 +1,599 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: whitesmoke;
+}
+
+/* Header */
+header {
+    text-align: center;
+    background: #2D9CDB;
+    color: white;
+    padding: 10px;
+}
+
+header img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 1px;
+    border-bottom: 2px solid #464646; /* Add bottom border */
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar .nav-links {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    padding-right: 150px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
+    transition: all 0.4s ease;
+}
+
+.navbar .nav-links a:hover {
+    background-color: #ddd;
+    color: black;
+    z-index: 2;
+    transform: scale(1.1)
+    
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown .dropbtn {
+    background-color: #333;
+    color: white;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ddd;
+    color: black;
+    transform: scale(1.1)
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 5;
+    background: #212121;
+    min-width: 160px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s;
+    pointer-events: none;
+    border-radius: 0.5rem;
+    z-index: 3;
+  }
+
+  .dropdown:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .dropdown-content a {
+    color: #374151;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;  /* Use flexbox for better alignment */
+    align-items: left;  /* Vertically align text and icon */
+    justify-content: flex-start;  /* Align items to the left */
+  }
+  .dropdown-content a .material-symbols-outlined {
+    margin-right: 8px;  /* Space between the icon and the text */
+    font-size: 24px;  /* Adjust the icon size */
+}
+
+.material-symbols-outlined {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animation class for the icon */
+.icon-animation {
+    transform: scale(1.2);
+    opacity: 0.7;
+}
+
+  .dropdown-content a:hover {
+    background: #f3f4f6;
+  }
+
+  /* Dark Mode Styles & Footer */
+    footer {
+        background-color: #333;; /* Default background color for light mode */
+        color: white;             /* Default text color for light mode */
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+        transition: background-color 1.5s, color 1.5s; /* Added transition */
+    }
+
+    body.dark-mode {
+        background-color: #333;
+        color: #fff;
+    }
+
+    body.dark-mode footer {
+        background-color: #333;
+        color: white;
+    }
+    a.dark-mode {
+        color: #fff;
+    }
+    .toggle-btn {
+        cursor: pointer;
+    }
+
+/* Story Section */
+.story-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.stories-container {
+    display: flex;
+    overflow: hidden;
+    width: 400px;
+    white-space: nowrap;
+}
+
+.stories-container {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.story {
+    width: 100px; /* Adjust as needed */
+    height: 177.78px; /* Maintain 9:16 aspect ratio */
+    margin: 5px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+}
+
+.story img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Story Viewer */
+.story-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+}
+
+.story-viewer-content {
+    position: relative;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+#closeViewer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+#prevStoryView, #nextStoryView {
+    position: absolute;
+    top: 50%;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#prevStoryView {
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+#nextStoryView {
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+#viewerImage, #viewerVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* News Feed */
+.news-feed {
+    max-width: 500px;
+    margin: auto;
+}
+
+/* Post Text Box */
+#postText {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* Facebook's font */
+    font-size: 16px; /* Makes the text more readable */
+    line-height: 1.5;  /* Adjusts line spacing */
+    width: 100%;  /* Ensures input takes up the full width of its container */
+    border: 1px solid #d1d1d1;  /* Light border for input field */
+    border-radius: 5px;  /* Rounded corners */
+    background-color: transparent;  /* Transparent background */
+    resize: none;  /* Prevents resizing of the textarea */
+    min-height: 120px;  /* Sets a minimum height */
+    margin-bottom: 10px;  /* Adds space below the input field */
+}
+
+/* Placeholder Styling */
+#postText::placeholder {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* Facebook's font */
+    font-size: 14px;   /* Placeholder text size */
+    color: #a8a8a8;    /* Light gray color for placeholder */
+    font-weight: 400;  /* Normal font weight */
+    letter-spacing: 0.5px;  /* Slight letter spacing for better readability */
+}
+
+.post-creator {
+    background: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Make the child elements stretch across the container */
+}
+
+.posts-container {
+    margin-top: 10px;
+}
+
+.post {
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.post img, .post video {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.post-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+
+/* Profile Image Preview */
+.image-preview {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0; /* Prevent shrinking */
+    cursor: pointer;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Story Upload Modal Styles */
+.modal {
+    display: none;  /* Hide by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.modal button {
+    background: #2D9CDB;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content img, 
+.modal-content video {
+    max-width: 100%; /* Ensures media doesn't exceed modal width */
+    max-height: 80vh; /* Prevents modal from becoming too tall */
+    border-radius: 10px;
+    object-fit: contain; /* Ensures the entire image fits without distortion */
+}
+
+.modal button:hover {
+    background: #1C7FBD;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    color: black;
+    background: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+}
+
+#storyPreview {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.edit-tools button {
+    margin: 5px;
+}
+
+/* Style the video preview in the modal */
+#storyPreview video {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* Styling for the image inside the preview */
+#storyImage {
+    max-width: 100%;
+    max-height: 400px;
+}
+
+#closeViewer {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+#closeViewer:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+#closeViewer:focus {
+    outline: 2px solid white;
+}
+
+
+/* Button Styles */
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    background-color: #1b56a8; /* Primary button color */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px; /* Adds space above the button */
+    align-self: flex-start; /* Aligns the button to the left */
+}
+
+button:hover {
+    background-color: #0c284e;
+    transform: scale(1.05);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(27, 86, 168, 0.6);
+}
+
+/* Icon Buttons */
+button .material-symbols-outlined {
+    font-size: 24px;
+    margin-right: 8px; /* Space between icon and text */
+}
+
+/* Left & Right Navigation Buttons for Stories */
+#prevStory, #nextStory, #prevStoryView, #nextStoryView {
+    width: 45px;
+    height: 45px;
+    background-color: #ffffff;
+    color: #1b56a8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #1b56a8;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#prevStory:hover, #nextStory:hover, #prevStoryView:hover, #nextStoryView:hover {
+    background-color: #1b56a8;
+    color: white;
+    transform: scale(1.1);
+}
+
+#prevStory:focus, #nextStory:focus, #prevStoryView:focus, #nextStoryView:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(27, 86, 168, 0.6);
+}
+
+/* Modal & Story Upload Buttons */
+#storyUploadModal button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #1b56a8;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#storyUploadModal button:hover {
+    background-color: #0c284e;
+}
+
+#storyUploadModal button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(27, 86, 168, 0.6);
+}
+
+/* Dropdown Button */
+.dropbtn {
+    padding: 12px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #333;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dropbtn:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+/* Dropdown Content Button */
+.dropdown-content a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    color: #212121;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f3f4f6;
+}
+
+/* Active Button States */
+button:active, .dropbtn:active {
+    transform: scale(0.98);
+}
+
+/* Modal Close Button */
+#closeViewer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(110, 110, 110, 0);
+    color: white;
+    border: none;
+    width: 35px; /* Set width */
+    height: 35px; /* Set height */
+    border-radius: 50%; /* Makes it circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px; /* Adjust icon size */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#closeViewer:hover {
+    transform: scale(1.1);
+}
+
+/* Progress Bar */
+.progress-bar {
+    position: absolute;
+    top:1em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #1877f2;
+    width: 0%;
+    transition: width linear;
+}
