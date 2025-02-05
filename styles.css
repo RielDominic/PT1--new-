@@ -6,11 +6,22 @@ body {
     transition: background-color 1.5s, color 1.5s;
     overflow: hidden;
 }
+
+/* Apply to the entire page */
+html, body {
+    height: 100%; /* Ensure the body takes up the full height */
+    margin: 0; /* Remove default margin */
+}
+
+/* Set background image */
 .bg {
-    /* The image used */
     background-image: url("images/background.png");
-    background-size: cover;
-  }
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background */
+    background-attachment: fill; /* Make background fixed while scrolling */
+    height: 100%; /* Ensure it fills the whole page */
+    width: 100%; /* Ensure it fills the whole page */
+}
 
 .dark-mode h2 {
     color: rgb(0, 0, 0);
@@ -36,6 +47,7 @@ body {
     display: flex;
     justify-content: center;
     flex-grow: 1;
+    padding-right: 120px;
 
 }
 
@@ -124,7 +136,6 @@ body {
 
   /* Dark Mode Styles & Footer */
   footer {
-    background-color: #fff; /* Default background color for light mode */
     color: #333;             /* Default text color for light mode */
     text-align: center;
     position: fixed;
@@ -132,6 +143,7 @@ body {
     width: 100%;
     display: fixed;
     transition: background-color 1.5s, color 1.5s; /* Added transition */
+    margin-bottom: auto;
 }
 
 body.dark-mode {
@@ -142,6 +154,7 @@ body.dark-mode {
 body.dark-mode footer {
     background-color: #333;
     color: white;
+    transition: background-color 2.5s, color 2.5s; /* Added transition */
 }
 a.dark-mode {
     color: #fff;
@@ -929,11 +942,11 @@ button:active, .dropbtn:active {
 
 .input-container {
     display: flex;
-    padding: 10px;
+    padding: 20px;
     border-top: 1px solid #ddd;
     position: fixed;
     bottom: 0;
-    width: 70%;
+    width: 72.5%;
 }
 
 .input-container input {
@@ -1023,6 +1036,9 @@ button:active, .dropbtn:active {
     border-radius: 10px;
     margin-bottom: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.dark-mode .postt p {
+    color: rgb(0, 0, 0);
 }
 
 /* Reaction Buttons */
