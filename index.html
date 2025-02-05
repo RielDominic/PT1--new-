@@ -76,27 +76,45 @@
                     <input type="text" id="storyTitleModal" placeholder="Enter story title">
                     <input type="file" id="storyFileInput" accept="image/*,video/*" onchange="previewStory()">
                     <button onclick="rotateImage()">Rotate</button>
-                    <button onclick="trimVideo()" disabled>Trim</button>
+                    <input type="file" id="audioInput" accept="audio/*" onchange="previewAudio()" />
+                    <audio id="audioPreview" controls style="display:none;">
+                        <source id="audioSource" src="" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
             <button onclick="uploadStory()">Upload</button>
             <button onclick="closeStoryUpload()">Cancel</button>
             </div>
         </div>
     </div>
 
-    <!-- Story Viewer -->
-    <div class="story-viewer" id="storyViewer">
-        <button id="prevStoryView" aria-label="Previous Story">&lt;</button>
-        <span id="closeViewer" aria-label="Close Viewer">&times;</span>
-        <div class="story-viewer-content">
-            <img id="viewerImage" src="" alt="Story">
-            <video id="viewerVideo" controls></video>
-            <div class="story-indicators" id="storyIndicators"></div>
-        </div>
-        <button id="nextStoryView" aria-label="Next Story">&gt;</button>
-        <div class = "progress-bar">
-            <div class="progress" id="progressBar"></div>
-        </div>
+<!-- Story Viewer -->
+<div class="story-viewer" id="storyViewer">
+    <button id="prevStoryView" aria-label="Previous Story">&lt;</button>
+    <span id="closeViewer" aria-label="Close Viewer">&times;</span>
+    <div class="story-viewer-content">
+        <img id="viewerImage" src="" alt="Story">
+        <video id="viewerVideo" controls></video>
+        <div class="story-indicators" id="storyIndicators"></div> <!-- Story indicators -->
     </div>
+    <button id="nextStoryView" aria-label="Next Story">&gt;</button>
+    
+    <!-- Reaction buttons -->
+    <div class="reaction-buttons">
+        <button id="heartReaction" onclick="reactToStory('heart')">
+            ❤️ <span id="heartCount">0</span>
+        </button>
+        <button id="commentReaction" onclick="reactToStory('comment')">
+            💬 <span id="commentCount">0</span>
+        </button>
+        <button id="shareReaction" onclick="reactToStory('share')">
+            🔄 <span id="shareCount">0</span>
+        </button>
+    </div>
+    
+    <div class="progress-bar">
+        <div class="progress" id="progressBar"></div>
+    </div>
+</div>
 
 
 
