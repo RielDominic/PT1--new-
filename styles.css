@@ -6,7 +6,11 @@ body {
     transition: background-color 1.5s, color 1.5s;
     overflow: hidden;
 }
-
+.bg {
+    /* The image used */
+    background-image: url("images/background.png");
+    background-size: cover;
+  }
 
 .dark-mode h2 {
     color: rgb(0, 0, 0);
@@ -126,7 +130,6 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding: 10px ;
     display: fixed;
     transition: background-color 1.5s, color 1.5s; /* Added transition */
 }
@@ -258,11 +261,12 @@ a.dark-mode {
 
 /* Story Viewer */
 .story-viewer {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    padding-left: 60px;
     background: rgba(0, 0, 0, 0.8);
     display: none; /* Initially hidden */
     justify-content: center;
@@ -278,16 +282,22 @@ a.dark-mode {
     display: flex;
     justify-content: center;
     align-items: center;
+    left: 65px;
 }
 
 /* Close Button */
 #closeViewer {
     position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 30px;
-    color: white;
+    top: 600px; /* Adjust this to position the button from the top */
+    right: 700px; /* Adjust this to position the button from the right */
+    font-size: 24px;
     cursor: pointer;
+    color: #000; /* Set the color of the close icon */
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+#closeViewer:hover {
+    background-color: #f0f0f0;
 }
 
 /* Navigation Buttons */
@@ -301,17 +311,19 @@ a.dark-mode {
     cursor: pointer;
     border: none;
     outline: none;
-    z-index: 1001;
+    z-index: 1000;
 }
 
 #prevStoryView {
     left: 20px;
     transform: translateY(-50%);
+    border-radius: 50%;
 }
 
 #nextStoryView {
-    right: 20px;
+    right: 70px;
     transform: translateY(-50%);
+    border-radius: 50%;
 }
 
 /* Story Media */
@@ -1035,6 +1047,7 @@ button:active, .dropbtn:active {
 .reaction-buttons span {
     font-size: 1rem;
     margin-left: 5px;
+    color: #ffffff;
 }
 
 /* Indicators */

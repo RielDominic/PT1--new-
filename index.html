@@ -10,6 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="bg">
 
     <!-- Navbar -->
     <div class="navbar">
@@ -89,14 +90,14 @@
 
 <!-- Story Viewer -->
 <div class="story-viewer" id="storyViewer">
-    <button id="prevStoryView" aria-label="Previous Story">&lt;</button>
-    <span id="closeViewer" aria-label="Close Viewer">&times;</span>
+    <button id="prevStoryView" aria-label="Previous Story"><span class="material-symbols-outlined">chevron_left</span></button>
     <div class="story-viewer-content">
+        <span id="closeViewer"><span class="material-symbols-outlined">close</span></span>
         <img id="viewerImage" src="" alt="Story">
         <video id="viewerVideo" controls></video>
         <div class="story-indicators" id="storyIndicators"></div> <!-- Story indicators -->
     </div>
-    <button id="nextStoryView" aria-label="Next Story">&gt;</button>
+    <button id="nextStoryView" aria-label="Next Story"><span class="material-symbols-outlined">chevron_right</span></button>
     
     <!-- Reaction buttons -->
     <div class="reaction-buttons">
@@ -126,5 +127,6 @@
     <script src="script.js"></script>
     <script src="dark-mode.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+</div>
 </body>
 </html>

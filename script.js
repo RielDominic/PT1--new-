@@ -73,9 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
-
-
 // Open Story Viewer (Display Media and Audio)
 function openStoryViewer(story) {
     const viewer = document.getElementById('storyViewer');
