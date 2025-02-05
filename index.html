@@ -52,53 +52,50 @@
     <!-- Story Section (Updated) -->
         <div class="stories-container" id="storiesContainer">
             <div class="story create-story" onclick="openStoryUpload()">
-                <span></span>
                             </div>
         </div>
-        
+    </div>
+    <div class="navs">
+        <button id="prevStory"><span class="material-symbols-outlined">chevron_left</span></button>
+        <button id="nextStory" ><span class="material-symbols-outlined">chevron_right</span></button>
     </div>
     <div class="posts-container" id="postsContainer"></div>
 </div>
-<div class="navs">
-    <button id="prevStory"><span class="material-symbols-outlined">chevron_left</span></button>
-    <button id="nextStory" ><span class="material-symbols-outlined">chevron_right</span></button>
-</div>
+
 
     <!-- Story Upload Modal -->
     <div id="storyUploadModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeStoryUpload()">&times;</span>
             <h2>Upload Story</h2>
-    <!-- file input -->
-            <input type="file" id="storyFileInput" accept="image/*,video/*" onchange="previewStory()">
-
     <!-- Preview Area -->
         <div id="storyPreview"></div>
 
                 <!-- Image Editing Tools -->
                 <div class="edit-tools" id="editTools">
                     <input type="text" id="storyTitleModal" placeholder="Enter story title">
+                    <input type="file" id="storyFileInput" accept="image/*,video/*" onchange="previewStory()">
                     <button onclick="rotateImage()">Rotate</button>
-                    <button onclick="trimVideo()">Trim</button>
-                </div>
+                    <button onclick="trimVideo()" disabled>Trim</button>
             <button onclick="uploadStory()">Upload</button>
             <button onclick="closeStoryUpload()">Cancel</button>
+        </div>
         </div>
     </div>
 
     <!-- Story Viewer -->
     <div class="story-viewer" id="storyViewer">
-        <div class = "progress-bar">
-            <div class="progress" id="progressBar"></div>
-        </div>
         <button id="prevStoryView" aria-label="Previous Story">&lt;</button>
+        <span id="closeViewer" aria-label="Close Viewer">&times;</span>
         <div class="story-viewer-content">
-            <span id="closeViewer" aria-label="Close Viewer">&times;</span>
             <img id="viewerImage" src="" alt="Story">
             <video id="viewerVideo" controls></video>
             <div class="story-indicators" id="storyIndicators"></div>
         </div>
         <button id="nextStoryView" aria-label="Next Story">&gt;</button>
+        <div class = "progress-bar">
+            <div class="progress" id="progressBar"></div>
+        </div>
     </div>
 
 

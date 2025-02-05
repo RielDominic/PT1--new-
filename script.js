@@ -91,6 +91,9 @@ function addPost() {
 
         // Display filenames
         fileNameDisplay.innerText = `Uploaded: ${fileNames.join(', ')}`;
+        
+        // Enable overflow whenever a media is uploaded
+        document.body.style.overflow = 'auto';  // Enable overflow to allow scrolling
     } else {
         fileNameDisplay.innerText = ''; // Clear filename display if no file is uploaded
     }
@@ -101,6 +104,11 @@ function addPost() {
     textInput.value = ''; // Clear text input
     mediaInput.value = ''; // Clear file input
     fileNameDisplay.innerText = ''; // Clear file name display
+
+    // Check if there are 3 or more posts in the feed
+    if (postContainer.children.length >= 3) {
+        document.body.style.overflow = 'auto';  // Enable overflow when there are 3 posts
+    }
 }
 
 // Function to update filename display when a file is selected
@@ -115,6 +123,7 @@ document.getElementById('mediaInput').addEventListener('change', function () {
 
     fileNameDisplay.innerText = fileNames.length > 0 ? `Selected: ${fileNames.join(', ')}` : '';
 });
+
 
 
 // Open Story Upload Modal
@@ -134,6 +143,7 @@ function closeStoryUpload() {
 // Upload Story
 function uploadStory() {
     const fileInput = document.getElementById('storyFileInput');
+    const textInput = document.getElementById('storyTitleModal');
     const file = fileInput.files[0];
 
     if (!file) {
@@ -165,6 +175,10 @@ function uploadStory() {
 
     story.appendChild(mediaElement);
     storyContainer.appendChild(story);
+
+    // **Clear selected file after upload**
+    fileInput.value = '';  // This will clear the selected file name
+    textInput.value = '';  // Clear the title input
 
     closeStoryUpload();
 }
