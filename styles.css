@@ -7,6 +7,7 @@ body {
     overflow: hidden;
 }
 
+
 .dark-mode h2 {
     color: rgb(0, 0, 0);
 }
@@ -684,7 +685,7 @@ a.dark-mode {
 /* Previous Button */
 #prevStory {
     position: absolute;
-    left: 53em; /* Set exact pixel positioning */
+    left: 53.4em; /* Set exact pixel positioning */
     top: -7rem;
     transform: translateY(-50%);
     width: 35px; /* Fixed width */
@@ -704,7 +705,7 @@ a.dark-mode {
 /* Next Button */
 #nextStory {
     position: absolute;
-    right: 48em; /* Set exact pixel positioning */
+    right: 48.4em; /* Set exact pixel positioning */
     top: -7rem;
     transform: translateY(-50%);
     width: 35px; /* Fixed width */
@@ -874,8 +875,8 @@ button:active, .dropbtn:active {
 }
 
 .message {
-    max-width: 70%;
-    padding: 10px;
+    max-width: 75%;
+    padding: 20px;
     margin: 5px 0;
     border-radius: 10px;
     word-wrap: break-word;

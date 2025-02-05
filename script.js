@@ -3,31 +3,59 @@ let storyQueue = []; // Your story queue array, should be filled with story obje
 let cropper; // Global variable to store the cropper instance
 let rotationAngle = 0; // Track the rotation angle
 
-// Previous and Next Story Scroll
 document.addEventListener("DOMContentLoaded", function () {
     const prevButton = document.getElementById("prevStory");
     const nextButton = document.getElementById("nextStory");
     const storiesContainer = document.getElementById("storiesContainer");
 
-    // Initially hide the prev button
+    // Initially hide the prev button and next button if no stories
     prevButton.style.display = "none";
+    nextButton.style.display = "none";
 
-    nextButton.addEventListener("click", () => {
-        storiesContainer.scrollBy({ left: 100, behavior: "smooth" });
+    // Function to check if there are any stories in the container
+    function hasStories() {
+        return storiesContainer.children.length > 0;
+    }
 
-        // Show the prev button when next is clicked
-        prevButton.style.display = "flex";
-    });
+    // Enable scrolling only if there are stories
+    if (hasStories()) {
+        nextButton.style.display = "flex"; // Show the next button if stories exist
 
-    prevButton.addEventListener("click", () => {
-        storiesContainer.scrollBy({ left: -100, behavior: "smooth" });
+        nextButton.addEventListener("click", () => {
+            const maxScrollLeft = storiesContainer.scrollWidth - storiesContainer.clientWidth;
+            const currentScrollLeft = storiesContainer.scrollLeft;
 
-        // Hide the prev button if scrolled back to the start
-        if (storiesContainer.scrollLeft <= 100) {
-            prevButton.style.display = "none";
-        }
-    });
+            // Check if not reached the end, then scroll
+            if (currentScrollLeft < maxScrollLeft) {
+                storiesContainer.scrollBy({ left: 100, behavior: "smooth" });
+            }
+
+            // Show the prev button when next is clicked
+            prevButton.style.display = "flex";
+
+            // Hide the next button if reached the end
+            if (currentScrollLeft + 100 >= maxScrollLeft) {
+                nextButton.style.display = "none";
+            }
+        });
+
+        prevButton.addEventListener("click", () => {
+            const currentScrollLeft = storiesContainer.scrollLeft;
+
+            storiesContainer.scrollBy({ left: -100, behavior: "smooth" });
+
+            // Hide the prev button if scrolled back to the start
+            if (currentScrollLeft <= 100) {
+                prevButton.style.display = "none";
+            }
+
+            // Show the next button when scrolled back from the start
+            nextButton.style.display = "flex";
+        });
+    }
 });
+
+
 
 
 // Open Story Viewer (Display Media)
@@ -183,30 +211,6 @@ function uploadStory() {
     closeStoryUpload();
 }
 
-
-// Dark Mode Toggle
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
-
-darkModeToggle.addEventListener('click', function() {
-    body.classList.toggle('dark-mode');
-    const icon = darkModeToggle.querySelector('.material-symbols-outlined');
-
-    // Add animation class
-    icon.classList.add('icon-animation');
-
-    // Change the icon text content based on dark mode status
-    if (body.classList.contains('dark-mode')) {
-        icon.textContent = 'light_mode';  // Change icon to 'light_mode'
-    } else {
-        icon.textContent = 'dark_mode';   // Change icon back to 'dark_mode'
-    }
-
-    // Remove the animation class after animation duration to reset
-    setTimeout(() => {
-        icon.classList.remove('icon-animation');
-    }, 300); // 300ms should match the duration of your animation
-});
 
 // Handle File Preview
 function previewStory() {
