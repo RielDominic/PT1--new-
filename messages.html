@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/f.png" type="image/png">
+    <title>Social Media Platform</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#" class="logo">&ensp;FriendZone.</a>
+        <div class="nav-links">
+            <a href="index.html"><span class="material-symbols-outlined">home</span></a>
+            <a href="account.html"><span class="material-symbols-outlined">account_circle</span></a>
+            <a href="messages.html"><span class="material-symbols-outlined">mail</span></a>
+            <div class="dropdown">
+                <button class="dropbtn"><span class="material-symbols-outlined">person</span></button>
+                <div class="dropdown-content">
+                    <a href="#"><span class="material-symbols-outlined">settings</span>Setting & privacy</a>
+                    <a href="#"><span class="material-symbols-outlined">help</span>Help & Support</a>
+                    <a href="#" class="toggle-btn" id="darkModeToggle"><span class="material-symbols-outlined">dark_mode</span>Display Accessibility</a>
+                    <a href="https://blankwhitescreen.com/"><span class="material-symbols-outlined">logout</span>&ensp;Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="messenger-container">
+        <div class="sidebar">
+            <h3>Chats</h3>
+            <div class="contact" onclick="startChat('John Doe')">
+                <img src="https://via.placeholder.com/40" alt="User">
+                <span>John Doe</span>
+            </div>
+            <div class="contact" onclick="startChat('Jane Smith')">
+                <img src="https://via.placeholder.com/40" alt="User">
+                <span>Jane Smith</span>
+            </div>
+        </div>
+        
+        <div class="chat-container">
+            <div class="chat-header">Select a chat</div>
+            <div class="messages"></div>
+            <div class="input-container">
+                <input type="text" id="messageInput" placeholder="Type a message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function startChat(name) {
+            document.querySelector(".chat-header").textContent = name;
+            document.querySelector(".messages").innerHTML = "";
+        }
+
+        function sendMessage() {
+            const input = document.getElementById("messageInput");
+            const messageText = input.value.trim();
+            
+            if (messageText === "") return;
+
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message", "sent");
+            messageDiv.textContent = messageText;
+
+            document.querySelector(".messages").appendChild(messageDiv);
+            input.value = "";
+
+            setTimeout(() => {
+                const responseDiv = document.createElement("div");
+                responseDiv.classList.add("message", "received");
+                responseDiv.textContent = "Got it!";
+                document.querySelector(".messages").appendChild(responseDiv);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

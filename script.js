@@ -4,13 +4,31 @@ let cropper; // Global variable to store the cropper instance
 let rotationAngle = 0; // Track the rotation angle
 
 // Previous and Next Story Scroll
-document.getElementById('prevStory').addEventListener('click', () => {
-    document.getElementById('storiesContainer').scrollBy({ left: -100, behavior: 'smooth' });
+document.addEventListener("DOMContentLoaded", function () {
+    const prevButton = document.getElementById("prevStory");
+    const nextButton = document.getElementById("nextStory");
+    const storiesContainer = document.getElementById("storiesContainer");
+
+    // Initially hide the prev button
+    prevButton.style.display = "none";
+
+    nextButton.addEventListener("click", () => {
+        storiesContainer.scrollBy({ left: 100, behavior: "smooth" });
+
+        // Show the prev button when next is clicked
+        prevButton.style.display = "flex";
+    });
+
+    prevButton.addEventListener("click", () => {
+        storiesContainer.scrollBy({ left: -100, behavior: "smooth" });
+
+        // Hide the prev button if scrolled back to the start
+        if (storiesContainer.scrollLeft <= 100) {
+            prevButton.style.display = "none";
+        }
+    });
 });
 
-document.getElementById('nextStory').addEventListener('click', () => {
-    document.getElementById('storiesContainer').scrollBy({ left: 100, behavior: 'smooth' });
-});
 
 // Open Story Viewer (Display Media)
 function openStoryViewer(storyURL, fileType) {
@@ -36,12 +54,16 @@ document.getElementById('closeViewer').addEventListener('click', () => {
     document.getElementById('storyViewer').style.display = 'none';
 });
 
-// Add Post Function
-function addPost() {
-    const text = document.getElementById('postText').value;
-    const file = document.getElementById('postImage').files[0];
 
-    if (!text && !file) {
+// Posting in News Feed 
+function addPost() {
+    const textInput = document.getElementById('postText');
+    const mediaInput = document.getElementById('mediaInput');
+    const fileNameDisplay = document.getElementById('fileNameDisplay'); // For showing file names
+    const text = textInput?.value.trim() || ''; // Get text input (trim whitespace)
+    const files = mediaInput.files;
+
+    if (!text && files.length === 0) {
         alert('Write something or add a media file.');
         return;
     }
@@ -49,18 +71,51 @@ function addPost() {
     const postContainer = document.getElementById('postsContainer');
     const post = document.createElement('div');
     post.classList.add('post');
-    post.innerHTML = `<p>${text}</p>`;
 
-    if (file) {
-        if (file.type.startsWith('image')) {
-            post.innerHTML += `<img src="${URL.createObjectURL(file)}">`;
-        } else {
-            post.innerHTML += `<video src="${URL.createObjectURL(file)}" controls></video>`;
+    if (text) {
+        post.innerHTML += `<p>${text}</p>`;
+    }
+
+    if (files.length > 0) {
+        let fileNames = []; // Store filenames
+
+        for (let file of files) {
+            fileNames.push(file.name); // Add filename to list
+
+            if (file.type.startsWith('image')) {
+                post.innerHTML += `<img src="${URL.createObjectURL(file)}">`;
+            } else if (file.type.startsWith('video')) {
+                post.innerHTML += `<video src="${URL.createObjectURL(file)}" controls></video>`;
+            }
         }
+
+        // Display filenames
+        fileNameDisplay.innerText = `Uploaded: ${fileNames.join(', ')}`;
+    } else {
+        fileNameDisplay.innerText = ''; // Clear filename display if no file is uploaded
     }
 
     postContainer.prepend(post);
+
+    // **Clear input fields after posting**
+    textInput.value = ''; // Clear text input
+    mediaInput.value = ''; // Clear file input
+    fileNameDisplay.innerText = ''; // Clear file name display
 }
+
+// Function to update filename display when a file is selected
+document.getElementById('mediaInput').addEventListener('change', function () {
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+    const files = this.files;
+    let fileNames = [];
+
+    for (let file of files) {
+        fileNames.push(file.name);
+    }
+
+    fileNameDisplay.innerText = fileNames.length > 0 ? `Selected: ${fileNames.join(', ')}` : '';
+});
+
 
 // Open Story Upload Modal
 function openStoryUpload() {

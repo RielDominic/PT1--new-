@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/f.png" type="image/png">
+    <title>Profile Page</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#" class="logo">&ensp;FriendZone.</a>
+        <div class="nav-links">
+            <a href="index.html"><span class="material-symbols-outlined">home</span></a>
+            <a href="account.html"><span class="material-symbols-outlined">account_circle</span></a>
+            <a href="messages.html"><span class="material-symbols-outlined">mail</span></a>
+            <div class="dropdown">
+                <button class="dropbtn"><span class="material-symbols-outlined">person</span></button>
+                <div class="dropdown-content">
+                    <a href="#"><span class="material-symbols-outlined">settings</span>Setting & privacy</a>
+                    <a href="#"><span class="material-symbols-outlined">help</span>Help & Support</a>
+                    <a href="#" class="toggle-btn" id="darkModeToggle"><span class="material-symbols-outlined">dark_mode</span>Display Accessibility</a>
+                    <a href="https://blankwhitescreen.com/"><span class="material-symbols-outlined">logout</span>&ensp;Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <div class="cover-photo">
+            <img src="https://via.placeholder.com/120" alt="Profile Picture" class="profile-picture">
+        </div>
+        <div class="profile-info">
+            <h2>John Doe</h2>
+            <p>@johndoe</p>
+            <div class="profile-buttons">
+                <button class="add-friend">Add Friend</button>
+                <button class="message">Message</button>
+            </div>
+        </div>
+        <div class="posts">
+            <div class="post">
+                <p>Just had an amazing day at the beach! 🌊</p>
+            </div>
+            <div class="post">
+                <p>Loving the new social media platform! 🚀</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

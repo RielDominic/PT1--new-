@@ -6,7 +6,7 @@
     <title>Social Media Platform</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet">
-    <link rel="icon" href="images/f.png" type="image/png">
+    <link rel="icon" href="images/F.png" type="image/png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
 </head>
 <body>
@@ -17,8 +17,8 @@
 
         <div class="nav-links">
             <a href="index.html"><span class="material-symbols-outlined">home</span></a>
-            <a href="account/account.html"><span class="material-symbols-outlined">account_circle</span></a>
-            <a href="messages/messages.html"><span class="material-symbols-outlined">mail</span></a>
+            <a href="account.html"><span class="material-symbols-outlined">account_circle</span></a>
+            <a href="messages.html"><span class="material-symbols-outlined">mail</span></a>
 
             <!-- Account Dropdown -->
             <div class="dropdown">
@@ -32,19 +32,37 @@
             </div>
         </div>
     </div>
+        <!-- News Feed -->
+        <div class="news-feed">
+            <div class="post-creator">
+                <div class="image-preview">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4g_2Qj3LsNR-iqUAFm6ut2EQVcaou4u2YXw&s" alt="Profile Image" id="profileImage" onclick="changeProfileImage()">
+                </div>
+                <textarea id="postText" placeholder="What's on your mind?"></textarea>
+                <span id="fileNameDisplay"></span>
+                <input type="file" id="mediaInput" accept="image/*,video/*" multiple>
+                <label for="mediaInput" class="file-upload-label">
+                    <span class="material-symbols-outlined">add_a_photo</span>
+                </label>
+                <button onclick="addPost()">Post</button>
+            </div>
+
 
     <!-- Add the new section for story upload -->
     <!-- Story Section (Updated) -->
-    <div class="story-section">
-        <button id="prevStory" aria-label="Previous Stories">&lt;</button>
         <div class="stories-container" id="storiesContainer">
             <div class="story create-story" onclick="openStoryUpload()">
-                <span>+</span>
-                <p>Create Story</p>
-            </div>
+                <span></span>
+                            </div>
         </div>
-        <button id="nextStory" aria-label="Next Stories">&gt;</button>
+        
     </div>
+    <div class="posts-container" id="postsContainer"></div>
+</div>
+<div class="navs">
+    <button id="prevStory"><span class="material-symbols-outlined">chevron_left</span></button>
+    <button id="nextStory" ><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
 
     <!-- Story Upload Modal -->
     <div id="storyUploadModal" class="modal">
@@ -83,21 +101,10 @@
         <button id="nextStoryView" aria-label="Next Story">&gt;</button>
     </div>
 
-    <!-- News Feed -->
-    <div class="news-feed">
-        <div class="post-creator">
-            <div class="image-preview">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4g_2Qj3LsNR-iqUAFm6ut2EQVcaou4u2YXw&s" alt="Profile Image" id="profileImage" onclick="changeProfileImage()">
-            </div>
-            <textarea id="postText" placeholder="What's on your mind?"></textarea>
-            <input type="file" id="postImage" accept="image/*,video/*">
-            <button onclick="addPost()">Post</button>
-        </div>
-        <div class="posts-container" id="postsContainer"></div>
-    </div>
+
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <p>&copy; 2025 My Social Platform</p>
     </footer>
 
