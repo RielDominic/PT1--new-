@@ -727,7 +727,7 @@ a.dark-mode {
 /* Previous Button */
 #prevStory {
     position: absolute;
-    left: 53.4em; /* Set exact pixel positioning */
+    left: 72em; /* Set exact pixel positioning */
     top: -7rem;
     transform: translateY(-50%);
     width: 35px; /* Fixed width */
@@ -747,7 +747,7 @@ a.dark-mode {
 /* Next Button */
 #nextStory {
     position: absolute;
-    right: 48.4em; /* Set exact pixel positioning */
+    right: 67em; /* Set exact pixel positioning */
     top: -7rem;
     transform: translateY(-50%);
     width: 35px; /* Fixed width */
